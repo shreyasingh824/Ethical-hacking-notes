@@ -1,0 +1,750 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Ethical Hacking Notes </title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(0, 0, 0, 0.06); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="23011780-e510-4533-9457-bc19954b7072" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">👩🏼‍💻</span></div><h1 class="page-title">Ethical Hacking Notes </h1><p class="page-description"></p></header><div class="page-body"><p id="40fabcd7-f8c3-47e6-9d1d-2a74861869d9" class=""><strong>Hacking</strong>: Art of finding and exploiting security loopholes in a system.</p><p id="11dbe891-ade7-4422-aa4d-16195f82e558" class="">Hacking is of two types:</p><ol type="1" id="0c347de2-8f8a-461a-b3e3-57ca4026a84f" class="numbered-list" start="1"><li><strong>Ethical</strong> - Ethical hacking is authorized and legal security testing aimed at identifying and fixing vulnerabilities to improve systems.</li></ol><ol type="1" id="7efb2a54-a291-49f2-8d26-3ef43bafa71a" class="numbered-list" start="2"><li><strong>Unethical</strong> - Unethical hacking involves unauthorized and illegal activities aimed at exploiting system vulnerabilities for malicious purposes.</li></ol><h3 id="9d8782bf-5b86-428f-bc1c-e894a135ffc2" class="">Types of hackers :</h3><ol type="1" id="1c3a59df-1d87-4423-80f4-faa0f6cbd038" class="numbered-list" start="1"><li><strong>White hat -</strong> security professionals </li></ol><ol type="1" id="6fc7eab1-029f-45a5-8fbd-3285c3562f85" class="numbered-list" start="2"><li><strong>Black hat -</strong> bad guy</li></ol><ol type="1" id="4ccebe43-4713-49df-b5f0-068161fb4757" class="numbered-list" start="3"><li><strong>Gray hat -</strong> partly white and black</li></ol><h2 id="3cedeecc-984e-4f1a-aea3-06591ce8b446" class="">How do hackers actually hack?</h2><ol type="1" id="d8bddab7-2c56-42cd-9fcb-12c25bb71742" class="numbered-list" start="1"><li>Collect information </li></ol><ol type="1" id="bc02a3bd-1f27-418e-b4e5-734feaea1632" class="numbered-list" start="2"><li>Find the weak entry point </li></ol><ol type="1" id="c7882630-e74d-4bd4-b472-565ece0cef6f" class="numbered-list" start="3"><li>Tries to stay inside the system</li></ol><ol type="1" id="0ac5e087-0d07-4cad-8955-2abeac228bf6" class="numbered-list" start="4"><li>clear tracks</li></ol><ul id="b0e8dbc8-9957-44c9-80f1-35e4554fcfa9" class="bulleted-list"><li style="list-style-type:disc">Clearer priorities according to comp strategy please</li></ul><h3 id="98b7071f-9f3b-493d-8797-84eca5a92325" class="">——————————————————————————————————</h3><h3 id="7d197302-b40b-4d72-9273-a1d6530998dc" class=""><strong>Steps for Black Hat Hackers</strong></h3><ol type="1" id="19111092-eb19-419f-b52d-2e7ba5167f9f" class="numbered-list" start="1"><li><mark class="highlight-blue"><strong>Information Gathering and Reconnaissance</strong></mark><mark class="highlight-blue">: </mark>Collecting data about the target system to identify potential entry points.</li></ol><ol type="1" id="3e802fb4-7050-4dd1-9f84-1c810c0851f8" class="numbered-list" start="2"><li><mark class="highlight-blue"><strong>Vulnerability Assessment</strong></mark><mark class="highlight-blue">:</mark> Analyzing the system for weaknesses that can be exploited.</li></ol><ol type="1" id="06852ee5-8084-4fb7-9eba-29df3ed3279b" class="numbered-list" start="3"><li><mark class="highlight-blue"><strong>Penetration Testing and Gaining Access</strong></mark><mark class="highlight-blue">:</mark> Attempting to break into the system using identified vulnerabilities.</li></ol><ol type="1" id="764bdb27-2822-439a-94fd-20834cef3c51" class="numbered-list" start="4"><li><mark class="highlight-blue"><strong>Escalating Privileges and Maintaining Access</strong></mark><mark class="highlight-blue">:</mark> Increasing access levels to control more of the system and ensure ongoing access.</li></ol><ol type="1" id="2a806e21-60c0-4620-8075-85e8ab196d90" class="numbered-list" start="5"><li><mark class="highlight-blue"><strong>Clearing Tracks</strong></mark><mark class="highlight-blue">:</mark> Erasing evidence of the hacking activities to avoid detection.</li></ol><h3 id="5d77b0c9-69c4-4a13-b966-95b65d7f3830" class=""><strong>Steps for White Hat Hackers</strong></h3><ol type="1" id="9d78576e-7763-4296-baae-82a9835a5feb" class="numbered-list" start="1"><li><mark class="highlight-blue"><strong>Legal Documentation</strong></mark><mark class="highlight-blue">:</mark> Obtaining written permission to perform security testing.</li></ol><ol type="1" id="cf905e15-676d-4c9b-9761-012470faedd8" class="numbered-list" start="2"><li><mark class="highlight-blue"><strong>Scope Assessment</strong></mark><mark class="highlight-blue">:</mark> Defining the boundaries and objectives of the security test.</li></ol><ol type="1" id="9f045e0f-e461-4c8a-aa53-6f2f2ec87e08" class="numbered-list" start="3"><li><mark class="highlight-blue"><strong>Information Assessment</strong></mark><mark class="highlight-blue">:</mark> Gathering data about the system to understand its architecture and potential vulnerabilities.</li></ol><ol type="1" id="bd971d84-c124-41be-a1aa-6aae83e0dca4" class="numbered-list" start="4"><li><mark class="highlight-blue"><strong>Vulnerability Assessment</strong></mark><mark class="highlight-blue">:</mark> Identifying and analyzing system weaknesses.</li></ol><ol type="1" id="7d5f2c07-33ec-4be9-9937-ae897ad62ee5" class="numbered-list" start="5"><li><mark class="highlight-blue"><strong>Penetration Testing (POC - Proof of Concepts)</strong></mark><mark class="highlight-blue">:</mark> Testing the identified vulnerabilities to confirm their exploitability.</li></ol><ol type="1" id="2ee91cb8-97cd-49de-8f1c-4ef161903765" class="numbered-list" start="6"><li><mark class="highlight-blue"><strong>Gaining Access</strong></mark><mark class="highlight-blue">:</mark> Demonstrating how vulnerabilities can be exploited to gain system access.</li></ol><ol type="1" id="02c9dd60-38e7-441c-93b6-b2a21125761f" class="numbered-list" start="7"><li><mark class="highlight-blue"><strong>Privilege Escalation</strong></mark><mark class="highlight-blue">:</mark> Testing if elevated access levels can be achieved within the system.</li></ol><ol type="1" id="974867c5-8310-4d96-b438-aa4e567d8ef4" class="numbered-list" start="8"><li><mark class="highlight-blue"><strong>Report Generation</strong></mark><mark class="highlight-blue">:</mark> Documenting findings, vulnerabilities, and recommendations.</li></ol><ol type="1" id="2a1968dc-8764-4222-a23e-01dc68bb3a4c" class="numbered-list" start="9"><li><mark class="highlight-blue"><strong>Patch Assistance</strong></mark><mark class="highlight-blue">: </mark>Helping to fix identified vulnerabilities and implement security measures.</li></ol><ol type="1" id="c88ef179-2756-4eaa-984a-ec87d0eb229d" class="numbered-list" start="10"><li><mark class="highlight-blue"><strong>Revalidation</strong></mark><mark class="highlight-blue">: </mark>Retesting the system to ensure vulnerabilities have been addressed and fixed.</li></ol><p id="f602b016-c4f8-4179-a26d-7fcad078a84c" class="">
+</p><p id="b3f3f1af-d450-4995-8b28-67948dbbb2fd" class="">———————————————————————————————————————————</p><p id="556ecb3a-f2db-4122-9125-c475f30db831" class=""><mark class="highlight-pink"><strong>Proof of Concept (POC)</strong></mark> in the context of ethical hacking refers to a demonstration that a particular vulnerability in a system can be exploited. It is used to show that the identified security issue is real and can be used to gain unauthorized access or cause harm. The POC typically includes:</p><ol type="1" id="200096a1-920e-470d-aa5d-95f66d78be5c" class="numbered-list" start="1"><li><strong>Verification</strong>: Confirm that the vulnerability exists and can be exploited.</li></ol><ol type="1" id="53986eda-39df-428c-bdda-0489d2748068" class="numbered-list" start="2"><li><strong>Demonstration</strong>: Showing a controlled exploit to illustrate the potential impact.</li></ol><ol type="1" id="5185b279-55ba-481a-a77a-9a5b4e906084" class="numbered-list" start="3"><li><strong>Documentation</strong>: Providing detailed information about the exploit method and its effects, which can be used to develop patches or mitigation strategies.</li></ol><p id="ca81d72e-aa13-448e-a33b-b1ba4269a7ab" class="">———————————————————————————————————————————</p><h2 id="3849b2a5-5fc2-4736-b0f5-7302436cc07c" class="">Types of Security Testing</h2><h3 id="d139333a-0a50-41fa-9467-f86bd07beb1e" class="">Based on the Level of Assistance Provided by the Organization</h3><ol type="1" id="4ff72a1e-c5c3-4e4e-b6dc-67dbb81f2c88" class="numbered-list" start="1"><li><strong><span style="border-bottom:0.05em solid">White Box Testing</span></strong><span style="border-bottom:0.05em solid">:</span><p id="00e3e1a7-f82e-49bb-8aef-fbecba2e5052" class=""> Also known as clear box or glass box testing, white box testing involves thorough knowledge of the system&#x27;s internal structure, including source code, architecture, and configurations.</p></li></ol><ol type="1" id="1a7df2f9-0495-4308-9250-76ea2bf52209" class="numbered-list" start="2"><li><strong><span style="border-bottom:0.05em solid">Black Box Testing</span></strong><span style="border-bottom:0.05em solid">:</span><p id="2090b4cc-2319-4e71-86be-1f5686943d29" class="">This method involves no prior knowledge of the system&#x27;s internal workings. Testers interact with the system as an external attacker would, using only publicly available information.</p></li></ol><ol type="1" id="b4a76da3-0ba4-445d-a2ca-0c6bf56f611e" class="numbered-list" start="3"><li><strong><span style="border-bottom:0.05em solid">Gray Box Testing</span></strong><span style="border-bottom:0.05em solid">:</span><p id="8919d11c-bc50-4c8b-8f40-f798b42f928e" class=""> Gray box testing combines elements of both white box and black box testing. Testers have partial knowledge of the internal workings of the system, typically limited to specific areas.</p></li></ol><h3 id="168be9f5-96ba-4e96-9cef-f02579d79bab" class="">Based on the Level of Security Expert</h3><ol type="1" id="72321810-115e-47aa-9b2f-8f699e7d34a4" class="numbered-list" start="1"><li><strong><span style="border-bottom:0.05em solid">Internal Testing</span></strong><span style="border-bottom:0.05em solid">:</span><ul id="174e22a2-2520-4083-b31a-6610a16cbe1f" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Conducted by the organization&#x27;s own security team or internal auditors. These testers have access to internal documentation, resources, and systems.</li></ul><ul id="209cf3a7-7544-4831-82ef-aaf057fa9910" class="bulleted-list"><li style="list-style-type:disc"><strong>Advantages</strong>: Deep understanding of the system and organizational context, allowing for more targeted and context-aware testing.</li></ul><ul id="2a0d4463-2c3d-4221-b27e-dabb8871b5d5" class="bulleted-list"><li style="list-style-type:disc"><strong>Use Case</strong>: Best for continuous security assessments, compliance checks, and internal audits.</li></ul></li></ol><ol type="1" id="ed0bd82b-f29b-4739-8cb8-640f938afddc" class="numbered-list" start="2"><li><strong><span style="border-bottom:0.05em solid">External Testing</span></strong><span style="border-bottom:0.05em solid">:</span><ul id="78aaa5fc-6f24-47b4-b774-fbc6d3047991" class="bulleted-list"><li style="list-style-type:disc"><strong>Description</strong>: Performed by independent security experts or third-party firms. These testers usually have limited or no access to internal resources and approach the system from an outsider&#x27;s perspective.</li></ul><ul id="c95a5fb6-b6cb-43bd-8f8b-c5fa236e8bca" class="bulleted-list"><li style="list-style-type:disc"><strong>Advantages</strong>: Provides an unbiased evaluation of the system&#x27;s security posture, uncovering vulnerabilities that may be overlooked by internal teams.</li></ul><ul id="02059ddc-09b1-43b1-addc-049cd86bc6d2" class="bulleted-list"><li style="list-style-type:disc"><strong>Use Case</strong>: Ideal for penetration testing, security audits, and regulatory compliance, offering a fresh perspective on potential threats and vulnerabilities.</li></ul><p id="6a4800ff-320f-4fe1-a46e-35b058173cc0" class="">—————————————————————————————————————————</p><p id="0f0b05ee-9385-4ced-a01a-c62ac795c99f" class=""><a href="https://www.ipchicken.com/">https://www.ipchicken.com/</a>  shows the temporary port used by the browser .</p><h2 id="77d0396f-c73f-4849-a30d-65a51d91b134" class="">Proxy Server</h2><p id="35a2ee3a-2cfc-453a-b106-9c2a103f1fcc" class="">A proxy in networking is an intermediary server that sits between a client and a destination server. It processes requests from clients seeking resources from other servers. </p><p id="cc156c74-473d-4249-bdb0-c43de92849cc" class="">Proxy: OWASP ZAP / Burpsuit</p><p id="f9d1d27d-d42f-47f5-af51-dd1ff9050d6e" class="">Browser plugin proxy: FOxyProxy / Anonymox</p><p id="9b8e57a1-4e9b-4ceb-81c3-4f107b62a9bb" class="">The primary functions and benefits of a proxy server include:</p><ol type="1" id="fdbcaa29-053f-4199-9dd6-fc3da7e43ad8" class="numbered-list" start="1"><li><strong>Anonymity</strong>: Hides the client&#x27;s IP address from the destination server, enhancing privacy and security.</li></ol><ol type="1" id="d2fb5c2a-7dbb-43bc-b790-1a9caf39ce2c" class="numbered-list" start="2"><li><strong>Security</strong>: Acts as a barrier to potential threats, filtering malicious content and providing an additional layer of security.</li></ol><ol type="1" id="a95f2ee5-d236-4d10-a57b-227d5753c80f" class="numbered-list" start="3"><li><strong>Caching</strong>: Stores copies of frequently accessed resources to speed up subsequent requests and reduce bandwidth usage.</li></ol><ol type="1" id="180357da-5284-4fe8-b166-005647b7c795" class="numbered-list" start="4"><li><strong>Access Control</strong>: Restricts or allows access to specific websites or services based on predefined policies.</li></ol><ol type="1" id="33f32ad9-670f-4e56-b22e-d38c72b18d30" class="numbered-list" start="5"><li><strong>Content Filtering</strong>: Blocks access to inappropriate or harmful content, often used in schools and workplaces.</li></ol><ol type="1" id="a8fe03df-3f26-47f3-bfdc-9d40bb1d1e64" class="numbered-list" start="6"><li><strong>Load Balancing</strong>: Distributes network traffic across multiple servers to improve performance and reliability.</li></ol><figure id="86f08e7d-5efb-4cf8-b398-e752e2b108a8" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Screenshot_2024-07-01_152719.png"><img style="width:680px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Screenshot_2024-07-01_152719.png"/></a></figure><p id="69866510-4d27-48cc-89f7-7a119ea6ef38" class="">But there are serveral disadvantages of proxy :</p><ol type="1" id="140c4172-207a-453e-8827-2ba388f4e5b9" class="numbered-list" start="1"><li>No guarantee of security and anonymity.</li></ol><ol type="1" id="dcd82295-3158-43d7-b814-eb4bf96942c7" class="numbered-list" start="2"><li>Proxies keep log of all requests.</li></ol><ol type="1" id="2a4477e2-8f31-4a01-804f-5e4182082987" class="numbered-list" start="3"><li>No encryption is provided in a lot of cases.</li></ol><ol type="1" id="47c5ea25-1bf3-4214-ab88-eaf9c5b9ea39" class="numbered-list" start="4"><li>can only be used for web browsers on PC.</li></ol><p id="9a15f7b5-02fc-4973-ad5d-b3c60a8936da" class="">To get rid of these issues VPNS are used.</p><h2 id="615d5c1f-697e-4293-8a0f-69c7e522735b" class="">VPN</h2><p id="86199c7b-0156-4e6f-b5f3-e6559cadd837" class="">A <strong>VPN (Virtual Private Network)</strong> is a technology that creates a secure and encrypted connection over a less secure network, such as the internet. It enables users to securely connect to a private network remotely, as if they were directly connected to the private network&#x27;s local resources.</p><h3 id="c86bfd17-540a-4455-a330-5dad6e896bd5" class="">Use Cases of VPN:</h3><ol type="1" id="921e8138-e55d-4a96-977c-f1e4984d8bbd" class="numbered-list" start="1"><li><strong>Remote Access</strong>: Employees can securely access company networks and resources from remote locations, ensuring confidentiality and integrity of data.</li></ol><ol type="1" id="2ed82649-7a32-450c-92ce-116c46bd553d" class="numbered-list" start="2"><li><strong>Privacy and Anonymity</strong>: Users can protect their online activities and browsing history from ISPs (Internet Service Providers), government surveillance, and other third parties.</li></ol><ol type="1" id="cd17c8d7-7420-4314-a912-4d9f940c2b64" class="numbered-list" start="3"><li><strong>Bypassing Geo-blocks</strong>: VPNs enable users to access content and services that may be restricted based on geographical location, such as streaming services and websites.</li></ol><ol type="1" id="ff644f00-e34a-4548-8e84-23e632e8a6de" class="numbered-list" start="4"><li><strong>Enhanced Security</strong>: VPNs are used to secure public Wi-Fi connections, protecting against potential threats and unauthorized access to personal data.</li></ol><p id="c4b63ee9-b393-4928-abf9-85f60e1ee184" class="">Advantages of VPN: </p><ul id="0ba6ae34-9733-4604-88c6-0bae230d3f61" class="bulleted-list"><li style="list-style-type:disc"><strong>Encryption</strong>: VPNs encrypt all traffic between the user&#x27;s device and the VPN server, ensuring privacy and confidentiality of data transmitted over the internet. Proxies may not always provide encryption, leaving data vulnerable to interception.</li></ul><ul id="5af3d9b6-c026-4f8b-bfba-d0852c5f25c3" class="bulleted-list"><li style="list-style-type:disc"><strong>Security</strong>: VPNs provide a higher level of security compared to proxies by creating a secure tunnel through which data travels. This protects against various online threats, including hackers, snoopers, and malicious actors.</li></ul><ul id="251bdb98-5043-4d60-8b8c-2aca4dc45795" class="bulleted-list"><li style="list-style-type:disc"><strong>Privacy</strong>: VPNs mask the user&#x27;s IP address and location, enhancing anonymity and privacy online. Proxies typically do not offer the same level of IP address masking and may leak identifying information.</li></ul><p id="ebb5dac5-3e3c-40e2-9c89-6ab26dff8b2b" class="">Commonly used VPNs are ;</p><ol type="1" id="ae8ee004-d1aa-4626-a679-fb1719aa1d57" class="numbered-list" start="1"><li>Hotspotshield</li></ol><ol type="1" id="fee31405-d6e3-4b2b-9d13-f3cd287aa099" class="numbered-list" start="2"><li>Express VPN</li></ol><ol type="1" id="828c481e-a888-4cea-a57a-0bff415339ba" class="numbered-list" start="3"><li>Hide.me</li></ol><p id="cb2490c5-9242-43a2-a203-5bf596a078ce" class="">—————————————————————————————————————————</p><h1 id="0294afa9-2a78-45a9-adaf-337f4116fbda" class=""><strong>Information gathering </strong></h1><p id="8447456b-4d80-49ac-8753-d84a97ce08bf" class="">Gathering as much information about the target as possible and organizing it in a structured manner so that it can be utilized later in the vulnerability and penetration testing phase.</p><p id="60e1f239-eadc-4635-b9bf-68bf531faf01" class=""><strong>Reconnaissance</strong>: process of analyzing all this information gathered and utilizing it to understand the target.</p><p id="2cf306d7-43e5-44b0-901b-c8a8a92e393d" class="">Here target is web application who needs to be tested and information we try to gather is digital footprint.</p><figure id="686686f9-a483-47e2-b143-451aa6b70308" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/29822691-cd14-4d13-85bd-3ade518d6f67.png"><img style="width:558.1875px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/29822691-cd14-4d13-85bd-3ade518d6f67.png"/></a></figure><p id="578dac2a-be0e-445d-bc44-1395d651ba92" class="">Information gathering services:</p><ol type="1" id="08b67e62-95f2-44d3-a2ea-e1e93a4ca1f2" class="numbered-list" start="1"><li><strong>Whols information</strong>:  whols is a protocol that queries and receives responses from the database that stores the registration info of a domain or IP address. (whois.com)[Name of the Organisation , Owner of the domain , Developer]</li></ol><figure id="34f1dca5-e822-4e27-8764-c66ff1ce33eb" class="image" style="text-align:center"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Screenshot_2024-07-02_100203.png"><img style="width:336px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Screenshot_2024-07-02_100203.png"/></a></figure><p id="07303332-2fb2-469d-b28e-a858d452cd2d" class=""><a href="http://whois.com/">whois.com</a> is now paid.</p><ol type="1" id="87d974e2-8a71-4d35-8d20-c66a74527fa0" class="numbered-list" start="1"><li><strong>Reverse ip lookup</strong>: looks up the Ip address and gives a list of all the domains running on the same server. (  www. yougetsignal.com)</li></ol><p id="0dc732c6-30df-401c-9dda-2d5da659fc0f" class="">websites are hosted on a server to make it available 24X7 , somethimes multiple websites are hosted on the same server.</p><figure id="fb578911-645f-4517-8896-0f15e9dee5e9" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Screenshot_2024-07-02_102237.png"><img style="width:530.2000122070312px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Screenshot_2024-07-02_102237.png"/></a></figure><p id="2942301a-5048-46cf-b9a9-eccfbd47fdd6" class="">Suppose websites A and B are hosted on the same server, our target is A but it is difficult to find bugs in A, but it is easy to find bugs in B so the hacker holds control over the server by exploiting the bugs in B, and from the server now he can access A also.</p><p id="b25088d3-420f-49c7-a08e-272e497bfec1" class="">When talking about whols information targeted informations are :</p><ol type="1" id="0eb403aa-8e7a-4551-86a1-c6186a45ee59" class="numbered-list" start="1"><li>People - [ Full name, Email address, Mobile number]</li></ol><p id="1deb7b60-4068-4a18-85db-daa58d895db0" class="">we can do key search by putting it in “ “ in google and full name can be get by doing a forgot password in social media platform.</p><p id="591a0cc5-a57b-4447-8d62-16f41f848295" class="">2. Organization - social media platform, organisation financial analysis services (crunchbase, wiki, angelList) , </p><h2 id="b59ac8da-97ea-46a3-94ab-6f59d099e116" class=""><strong>Some security misconceptions :</strong></h2><ol type="1" id="d51a8fc3-add1-4692-9dff-b4d2fd44c5ea" class="numbered-list" start="1"><li>If a website uses HTTPS , it is secure. (but it can be hacked using other techniques)</li></ol><ol type="1" id="9b7d7b56-0920-4e4a-9953-b8bfa9b07124" class="numbered-list" start="2"><li>If a webiste has firewall/IDS/IPS, it can not be hacked.(but it is possible to bypass the security measures.)</li></ol><figure id="81fc4bed-c5a0-4254-b373-e7650ace59cd" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Screenshot_2024-07-02_104450.png"><img style="width:624px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Screenshot_2024-07-02_104450.png"/></a></figure><ol type="1" id="30cff5c3-d2dc-4182-b723-72953029c4ad" class="numbered-list" start="3"><li>Hiding a file/folder/domain is the same as protecting them. (but it is important to put strong security checks on them.)</li></ol><hr id="a520f4a1-b1e8-4121-bf85-706b64720920"/><p id="0417d4cb-91f8-486c-9772-8d9caecb75df" class="">
+</p><p id="6eb4e854-ceb5-4d42-9085-59c9a1442fb6" class="">We make website dynamic by using server side programming language.</p><p id="70f4e71e-3f5b-4d55-b82d-b5e80481acb2" class="">Ex. PHP</p><figure id="b3b49fa4-c39f-4509-8be7-e23ccef43ce5" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Screenshot_2024-07-02_110341.png"><img style="width:768px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Screenshot_2024-07-02_110341.png"/></a></figure><h2 id="8f9702d7-8dc8-4a1d-8c58-80dda85f65da" class=""><strong>Vulnerability assessment and Penetration testing :</strong></h2><p id="42aca86f-2bd5-4bfb-ac5a-20278581f0b2" class="">VA:  Hacker or security expert tries to find all the vulnerabilities in the system.</p><p id="1d4cd8e0-4008-4758-8eea-e735f5f1b702" class="">PT: test the exploitability of the vulnerability.</p><p id="f60ae30d-3fe9-4ef0-bf0d-6e2a114feeba" class="">OWASP (Open Web Application Security Project)  : for web security (top 10 vulnerability)</p><p id="f5406dad-7382-45a8-8da3-2d463a0a3db7" class="">1 . <strong> SQL Injection:</strong>  SQL injection (SQLi) is a web security vulnerability that allows an attacker to interfere with the queries that an application makes to its database. This can allow an attacker to view data that they are not normally able to retrieve. This might include data that belongs to other users, or any other data that the application can access. In many cases, an attacker can modify or delete this data, causing persistent changes to the application&#x27;s content or behavior.</p><figure id="43749908-b701-4571-bdad-cef9d44249a8" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Screenshot_2024-07-02_123555.png"><img style="width:401px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Screenshot_2024-07-02_123555.png"/></a></figure><p id="742f654d-5bba-4141-8fca-200d97caed3b" class="">when we username as London’ this will treat rest part as comment </p><p id="7ce07444-2cd5-43ba-8da3-db5b9cb76ec4" class="">second way in password field ( ‘pass’ OR ‘1’=’1’ ) this will always true.</p><p id="f6342ace-72ec-406b-b207-fb2d3dfb3eee" class="">SELECT * FROM Customers WHERE City = ‘London’- - and CustomerID = 4  </p><p id="e00eae64-b662-42d6-b20b-0c551bf601e9" class="">Information_schema stores information about all the databses.</p><p id="643930a8-6ee7-4887-880f-91d91a792649" class="">Here proxy servers are used to inetcept the requests.</p><p id="5ab74088-db53-42c7-9313-d29c964c149d" class="">Burpsuit: </p><p id="beb25b13-2f91-416d-95d3-964e0b23c3a5" class="">To intercept the HTTPS request we have to install CA certificate.</p><figure id="b0852e29-f6ad-4662-939b-36965c5c5d85" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled.png"><img style="width:624px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled.png"/></a></figure><figure id="a16fea3b-d0cd-4de4-8a08-c89e692052e4" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%201.png"><img style="width:672px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%201.png"/></a></figure><h3 id="b57e17bf-b5ef-480d-90fb-195e134d58c0" class="">Automated tool to check SQL injection vulnerability : </h3><p id="88b03f84-87c2-41ad-851c-3c148d762eb4" class="">SQLmap  - it is a python based tool that was built to check if parametrs in an HTTP request are vulnerable to SQL injection.</p><p id="b57da846-7b77-45e1-9d87-8fa125941c85" class="">it will work with only Python 2</p><p id="1892ca41-22c9-4b5d-9f31-edc0cfdebece" class=""><mark class="highlight-red"><a href="https://github.com/sqlmapproject/sqlmap">https://github.com/sqlmapproject/sqlmap</a></mark></p><p id="40e6a43f-face-4423-92bd-753fc6ae2242" class="">python <a href="http://sqlmap.py">sqlmap.py</a> - - version ( does not come with GUI)</p><p id="49cd830b-566f-40ed-af3c-1e83cad693ab" class="">To check: python <a href="http://sqlmap.py">sqlmap.py</a> -u “url”</p><p id="5acce55f-a4b7-4bc4-bc9b-1de88a69afe7" class="">to get the database just add - python <a href="http://sqlmap.py">sqlmap.py</a> -u “url” -dbx</p><p id="ce6360bf-c14f-4144-830b-32f2e137b673" class="">to get names of table - add  - -tables</p><p id="bd8593c4-f1da-4256-8581-045ff939d7e6" class="">specific table using -T “name of table”</p><p id="7e390c1b-bfe1-4269-9653-6f2e722d08b3" class="">in case of incongnito we need cookie used in authentication by adding -</p><p id="7f5b8c52-d4b6-4845-af49-718d142ff7ff" class="">python <a href="http://sqlmap.py">sqlmap.py</a> -u “url” - -dbs - - cookie=”key”</p><p id="6508851b-97b6-4666-910d-a61ccb7dc7fc" class="">To test the POST based request using sqlmap just save the request in txt file Zodiac.txt </p><p id="7dd06ed3-a874-4712-b6e9-f36628ac2eac" class="">python <a href="http://sqlmap.py">sqlmap.py</a> -r zodiac.txt</p><hr id="eeb8e959-8f42-4b49-838c-c87e3eb22156"/><p id="90babc48-a471-4f16-9d15-f216d7f25a12" class="">
+</p><h2 id="568490f4-8198-46d0-a800-82a65bb11329" class="">Bypassing client side web application filters using burpsuite:</h2><p id="78ba5add-68b7-4134-bac5-e04bb2537fcf" class="">Like entering email without @ , and char in phone number  </p><figure id="c1ade842-485d-4402-be62-cf371a3af534" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%202.png"><img style="width:624px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%202.png"/></a></figure><p id="1c3e59ec-98f3-443a-b541-a6651929ca21" class="">can we bypass these restrictions?</p><p id="4dba17bf-9ab3-4e08-8f20-b62bdac971e0" class="">Steps to Bypass Client Side Filetrs </p><figure id="53daf790-892c-46d4-bb44-b7fcc96de680" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%203.png"><img style="width:528px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%203.png"/></a></figure><p id="18e206d5-1c2d-417d-ad0c-6f396484e97b" class="">IDOR (Insecure Direct Object Reference)  : Insecure direct object references (IDOR) are a type of access control vulnerability that arises when an application uses user-supplied input to access objects directly.</p><p id="9f406ca3-a67b-465d-bf3c-20cc19e9670b" class="">Rate limiting flaw: Rate limiting <strong>makes it harder for malicious actors to overburden the system and cause attacks like Denial of Service (DoS)</strong>.</p><p id="45792ff2-7d09-43d5-a39a-cf5b9851a77a" class="">(using intruder in burpsuit)<br/><br/></p><figure id="fe4c9dcc-9544-4772-b7a3-6c4cc3a0ddaa" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%204.png"><img style="width:480px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%204.png"/></a></figure><p id="55af459f-08ae-4de8-8ec1-10ef92a5c4cf" class="">Ways to attack a web server :</p><figure id="89c1ff6b-1720-456b-a344-156779f8befa" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/a3186a61-7e46-4fe0-a27d-fca49b5f0a4d.png"><img style="width:576px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/a3186a61-7e46-4fe0-a27d-fca49b5f0a4d.png"/></a></figure><p id="59714e6b-e409-44dc-8464-00f49645d2f3" class="">PHP shells are used to get crucial information which are backdoor (malware or trojans).</p><h3 id="6008f439-7dea-4c46-bed6-0b0be2a3b274" class="">Sessions and Cookies :</h3><p id="20a89f0c-27b5-4dbb-8dce-27e1420ae9db" class=""><strong>Cookies are small text files used to store user information on the user&#x27;s computer.</strong> <strong>Sessions are used to store user information on the user&#x27;s server side</strong>. Cookies expire after a specified lifetime or duration. A session ends when the user closes the browser or logs out.<br/><br/>Set-Cookie header: the <br/><strong>Set</strong>-<strong>Cookie HTTP response header</strong> is used to <strong>send</strong> a <strong>cookie</strong> from the server to the user agent so that the user agent can <strong>send</strong> it back to the server later.<br/><br/><br/></p><p id="c633b162-1f80-4912-8b8c-e53eb4d7ee25" class="">Content length header: The <em><strong>Content</strong></em>-<em><strong>Length header</strong></em> indicates the size of the message body, in bytes, sent to the recipient.</p><hr id="5f763bb8-36bf-4945-800d-910d120ef40d"/><p id="924fe2c3-c2c7-4459-8347-10cd7761ab96" class=""><br/>DOM : Document object model <br/></p><figure id="48908ea9-323f-48d9-a63a-08d8fc488d9f" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%205.png"><img style="width:576px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%205.png"/></a></figure><p id="eeea1907-ce98-472e-a4f8-6541b95ff2d1" class="">HTML is not case sensitive but js is case sensitive.</p><hr id="6f60e408-8061-46b4-96c2-86e962dc4409"/><p id="89f33dc7-2f65-4edd-8f75-06c316985020" class="">
+</p><h2 id="9d8677fa-7ed4-408c-8de8-c223146bf19d" class="">Temporary XSS</h2><p id="ce48fe7f-d688-4ede-a8b1-e0b19fe4e6dd" class="">vulnerabilities which allows hackers to insert malicious codes into the HTML code of the browser.(here action take place only when victim clicks the hacker-made link , it is not stored in the application)</p><h2 id="9a2a97ba-998f-4964-a983-48e5405a8c7b" class="">Permanent XSS</h2><p id="cf9329f9-6f9d-4ca0-bab0-0b82718d8ff8" class="">vulnerabilities in which hacker injects and execute malicious client side scripts through the browser which gets permanently stored in the database.</p><figure id="03a1816c-0f0b-482c-9de5-88658faa4ef9" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/22b73164-cfb0-41e6-b2de-26ad3e5f6588.png"><img style="width:558.1875px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/22b73164-cfb0-41e6-b2de-26ad3e5f6588.png"/></a></figure><h3 id="8b3ae0a7-aaf5-4071-8834-10f138efa405" class="">How to exploit temporary XSS?</h3><p id="f5f76ff6-71db-4120-a34a-c7f096628b49" class="">can be exploited using js .</p><p id="feae8766-6da4-4f5c-9e73-842d58677314" class="">by adding custom HTML or js in URL</p><h3 id="ebb1c215-5d12-469d-9d0f-e6e76ab11900" class="">How to exploit permanent XSS?</h3><p id="eced4e5a-feef-4ec7-b125-08d0371accf4" class="">like adding js in comment that will stored </p><hr id="efe887f7-d770-4277-807d-754109b4b529"/><p id="dea0d52a-9206-4245-9aef-efe131835d1c" class="">
+</p><h2 id="03474d99-6721-4a8f-9395-48daa08873e4" class=""><strong>Authentication vs. Authorization</strong></h2><p id="6729e1ef-5000-4913-a19c-a96c687adbf9" class="">Authentication is verifying the true identity of a user or entity, while authorization determines what a user can access and ensures that a user or entity receives the right access or permissions in a system.  Authentication is a prerequisite to authorization. </p><p id="44eb85fa-650d-4105-bdc9-5f62331f6c0d" class="">
+</p><h2 id="bc724689-d90f-4ec1-a9a9-4f86e65185bb" class=""><mark class="highlight-blue"><span style="border-bottom:0.05em solid">SQL injection lab :</span></mark></h2><p id="7d4c93be-b3cd-4b38-a616-a9cd84bba056" class=""><a href="https://portswigger.net/web-security/sql-injection/cheat-sheet">https://portswigger.net/web-security/sql-injection/cheat-sheet</a></p><ol type="1" id="19934f2e-df31-41be-acb7-ab466abddbfe" class="numbered-list" start="1"><li><mark class="highlight-red"><strong><a href="https://portswigger.net/web-security/sql-injection">SQL injection</a></strong></mark><mark class="highlight-red"><strong> vulnerability in WHERE clause allowing retrieval of hidden data</strong></mark></li></ol><p id="dd386747-c93c-4145-885a-9f52a719299f" class="">products WHERE category = &#x27;Gifts&#x27; AND released = 1</p><p id="093b0aea-9a82-4f57-8a61-16269aa3df54" class="">
+</p><figure id="5fc17ce3-55f9-4a15-a393-f69dd6b6e183" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%206.png"><img style="width:738px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%206.png"/></a></figure><p id="85751046-93ef-42b8-970d-0c075ca483a2" class="">
+</p><p id="090ce131-6c5e-4f75-9e75-ea82044ee5a8" class="">products WHERE category = &#x27;Gifts&#x27; OR 1=1 - - AND released = 1</p><p id="3bd07b75-fd9c-4973-9773-cf5e7c9e567a" class="">now after - - it will be comment out.</p><figure id="17bae788-b600-405f-9e9f-7f2ee804a5b2" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%207.png"><img style="width:530.2000122070312px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%207.png"/></a></figure><hr id="9465022e-91e7-4684-9949-46f2a77e814f"/><p id="35524a55-7768-43cc-9a8e-fe0d9c3df2aa" class="">
+</p><p id="7ad7408e-0c88-4401-be2b-19d6ac34a6f4" class="">
+</p><ol type="1" id="2791e496-e4a0-49cc-bca1-389bb881a977" class="numbered-list" start="2"><li><mark class="highlight-red"><strong>SQL injection vulnerability allowing login bypass</strong></mark></li></ol><figure id="b133c41e-1f43-4900-8380-b1ef62d4523f" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%208.png"><img style="width:816px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%208.png"/></a></figure><p id="6fd68b01-3757-46b5-8248-55bf35a6414a" class="">modify username administrator’ - - to comment out rest part </p><figure id="ed0b60f8-b771-45a3-85cc-6aaf86a90023" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%209.png"><img style="width:530.2000122070312px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%209.png"/></a></figure><hr id="94cc606b-baaa-4da7-bce7-edf3ace186d4"/><p id="52df9d4e-93a2-4519-b1c1-2f91a75ee79a" class="">
+</p><ol type="1" id="c033f9a5-447e-4363-b9d6-8e1d582a1b20" class="numbered-list" start="3"><li><mark class="highlight-red"><strong><a href="https://portswigger.net/web-security/sql-injection/union-attacks">SQL injection UNION</a></strong></mark><mark class="highlight-red"><strong> attack, determining the number of columns returned by the query</strong></mark></li></ol><p id="d6272354-72a9-49ab-b2d9-fbd1bb04c470" class="">here in case of union we should know the number of columns , and null is use to detremine the number of columns .</p><p id="3bd1fa6b-dfeb-420e-a4bb-bb001ae269f3" class="">select null , null from table</p><p id="df394399-750d-4185-912e-d54403e9c2a6" class="">if number of columns are incorrect it will give internal server error</p><p id="05e001de-a5cb-4741-b1d7-a20e6d5c1d5f" class="">
+</p><figure id="9aa46aec-d75e-4af8-9105-883a6ab2f258" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2010.png"><img style="width:576px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2010.png"/></a></figure><p id="06301182-9e56-4b33-ad6c-48b2cf5d886f" class="">on giving two columns it is giving internal server error but on giving three it is working , that means this has 3 number of columns.</p><figure id="694e7974-7dcb-4d66-9b57-c377591fc023" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2011.png"><img style="width:528px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2011.png"/></a></figure><hr id="4b8b27be-5b60-4e55-82b5-46c14df98c1d"/><p id="3aa47cb4-e7e0-45b5-b55e-180d189affc1" class="">
+</p><ol type="1" id="fcced889-3d2b-417b-b91b-9d66688b1eb0" class="numbered-list" start="4"><li><mark class="highlight-red"><strong><a href="https://portswigger.net/web-security/sql-injection/union-attacks">SQL injection UNION</a></strong></mark><mark class="highlight-red"><strong> attack, finding a column containing text</strong></mark></li></ol><p id="5f1e655a-0505-48fb-b579-7f2115881649" class="">Firstly detremine the number of columns here it is three </p><figure id="4648f41f-b33e-42af-ae7c-18e3325eca8b" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/788d6070-2217-4188-b4ee-fd66736461d8.png"><img style="width:558.1875px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/788d6070-2217-4188-b4ee-fd66736461d8.png"/></a></figure><figure id="0a6d4932-57f8-4fe2-ae43-69f71b41b85d" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2012.png"><img style="width:530.2000122070312px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2012.png"/></a></figure><figure id="80cf8c45-8700-4ecd-b698-10feef1c6c6c" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2013.png"><img style="width:530.2000122070312px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2013.png"/></a></figure><figure id="ead96e1e-b9bc-47c6-a810-51d910200f71" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2014.png"><img style="width:755px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2014.png"/></a></figure><hr id="6ef70272-4fec-418d-b412-2231b0822f7e"/><p id="a35273d8-bb44-4f3f-b0c5-5b7752b81a56" class="">
+</p><ol type="1" id="154b7d30-9dae-4b4e-9986-1ab0a87d0b82" class="numbered-list" start="5"><li><mark class="highlight-red"><strong><a href="https://portswigger.net/web-security/sql-injection/union-attacks">SQL injection UNION</a></strong></mark><mark class="highlight-red"><strong> attack, retrieving data from other tables</strong></mark></li></ol><figure id="f66ea662-1e4d-489a-80ed-88a2b050bf83" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2015.png"><img style="width:530.2000122070312px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2015.png"/></a></figure><p id="5ada8e10-1f3d-427b-a8c4-92ceefa8b194" class="">after getting all usernames and passwords , login as a administrator.</p><figure id="96a42d74-42a0-4d1d-8d82-be992df9aae3" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2016.png"><img style="width:576px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2016.png"/></a></figure><hr id="385582cf-ca64-4e7f-985e-c12b8567b002"/><p id="800bf340-aa38-4a94-a322-ce08db5db1a1" class="">
+</p><ol type="1" id="745ffe6f-4af8-4279-9de3-c1f38a98b399" class="numbered-list" start="6"><li><strong><a href="https://portswigger.net/web-security/sql-injection">SQL injection</a></strong><strong> attack, querying the database type and version on Oracle</strong></li></ol><p id="744e5b82-9be0-43e1-ad3c-de7f0e14212b" class="">There is a built-in table on Oracle called <code>dual</code> which we can use for this purpose.<br/><br/><br/></p><p id="b02c4cd0-c3d9-4f53-b163-35b9f3456b95" class="">We can query the database to determine its type and version. This information is useful when formulating more complicated attacks.</p><table id="dc8739fe-a8a4-46d4-8fe2-c7869283aeb9" class="simple-table"><tbody><tr id="32cd17d0-228d-477b-9dcf-2197910b6d47"><td id="Of]z" class="">Oracle</td><td id="r&gt;Up" class=""><code>SELECT banner FROM v$versionSELECT version FROM v$instance</code></td></tr><tr id="523f1d09-6acb-4793-8c8d-e98eefb2ce97"><td id="Of]z" class="">Microsoft</td><td id="r&gt;Up" class=""><code>SELECT @@version</code></td></tr><tr id="8afdeb19-1685-4fe2-9743-9dce94d73c5a"><td id="Of]z" class="">PostgreSQL</td><td id="r&gt;Up" class=""><code>SELECT version()</code></td></tr><tr id="ec5fc77e-bdfd-496b-b1e1-bb85db1050cc"><td id="Of]z" class="">MySQL</td><td id="r&gt;Up" class=""><code>SELECT @@version</code></td></tr></tbody></table><p id="62051b41-c87b-40bf-9c45-0d10165bc375" class="">&#x27;+UNION+SELECT+BANNER,+NULL+FROM+v$version—</p><figure id="eea1f4d9-5ddd-406d-a9de-082edf9d7651" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2017.png"><img style="width:816px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2017.png"/></a></figure><p id="a0124fa8-5e42-46b0-8b0d-67004b2f51c6" class="">
+</p><ol type="1" id="b3547df6-c517-4751-b28a-aaff01e24f87" class="numbered-list" start="7"><li><strong>SQL injection attack, querying the database type and version on MySQL and Microsoft</strong></li></ol><figure id="23730e8b-04c7-463a-bbfd-4d3bddd5300f" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2018.png"><img style="width:530.2000122070312px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2018.png"/></a></figure><ol type="1" id="4e0fae2a-e32b-4d71-be51-5e7f552aa0bb" class="numbered-list" start="8"><li><strong>SQL injection attack, listing the database contents on non-Oracle databases</strong></li></ol><p id="6d34d87c-d105-4016-a8ba-2c9a63cf79c2" class="">Find the list of all tables</p><figure id="23ec0815-7312-4d89-92dc-b230d5b7fb55" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2019.png"><img style="width:720px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2019.png"/></a></figure><figure id="ead026a3-0f9e-4e40-8ffc-812c9542e2f9" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2020.png"><img style="width:672px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2020.png"/></a></figure><h2 id="5ba9d417-1e5a-443f-9bd4-8326c6427292" class="">XSS Labs </h2><ol type="1" id="61211fd9-7d7d-4209-b951-c0e43e6c05a9" class="numbered-list" start="1"><li><strong><a href="https://portswigger.net/web-security/cross-site-scripting/reflected">Reflected XSS</a></strong><strong> into HTML context with nothing encoded</strong></li></ol><p id="cbb055d0-3c5a-4f50-97ef-9333e3db35f7" class=""><strong>arises when an application receives data in an HTTP request and includes that data within the immediate response in an unsafe way</strong>.<br/><br/>it will reflect back the script in search <br/></p><p id="81b7b957-3cdc-4ae2-a6e0-c97d086189b4" class="">just put script in the search and it</p><figure id="78fb3672-05dd-415a-bfd9-96ed48ba1069" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2021.png"><img style="width:672px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2021.png"/></a></figure><figure id="84308196-3164-40de-a756-a2e7e731f899" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2022.png"><img style="width:624px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2022.png"/></a></figure><ol type="1" id="4ca82f23-aaaf-443d-a467-33b93cae81a8" class="numbered-list" start="2"><li><strong><a href="https://portswigger.net/web-security/cross-site-scripting/stored">Stored XSS</a></strong><strong> into HTML context with nothing encoded</strong></li></ol><p id="8fee5abe-e234-467d-aa78-7f7c3e103bae" class="">Stored XSS, also known as persistent XSS, is the more damaging of the two. <strong>It occurs when a malicious script is injected directly into a vulnerable web application</strong>.<br/><br/><br/></p><figure id="2c865024-af37-44a5-89bc-64c6684fc678" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2023.png"><img style="width:576px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2023.png"/></a></figure><p id="9ecee362-bba5-4459-881c-e2dfc8425bda" class="">
+</p><ol type="1" id="673def9c-b546-4d5e-aaed-b5fcab135c43" class="numbered-list" start="3"><li><strong><a href="https://portswigger.net/web-security/cross-site-scripting/dom-based">DOM XSS</a></strong><strong> in </strong><code><strong>document.write</strong></code><strong> sink using source </strong><code><strong>location.search</strong></code></li></ol><p id="4c18fa92-9eae-4dd2-ba1a-831e9092aeaa" class=""><a href="https://0a30009203ae11b180f9a8c2005700d5.web-security-academy.net/?search=%3Cscript%3Ealert%281%29%3C%2Fscript%3E">https://0a30009203ae11b180f9a8c2005700d5.web-security-academy.net/?search=&lt;script&gt;alert(1)&lt;%2Fscript&gt;</a></p><p id="5ad21e39-57b1-42b3-8cf8-532cad711c0d" class="">this is the url when we are searching here so we can manipulate it by closing tag before</p><figure id="7562e179-7058-42da-95f6-72d3009c2c3a" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2024.png"><img style="width:864px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2024.png"/></a></figure><ol type="1" id="3736827c-d9b7-42b2-a61b-2539c48f1571" class="numbered-list" start="4"><li><strong><a href="https://portswigger.net/web-security/cross-site-scripting/dom-based">DOM XSS</a></strong><strong> in </strong><code><strong>innerHTML</strong></code><strong> sink using source </strong><code><strong>location.search</strong></code></li></ol><figure id="fc0ccbaa-2b96-42bf-b55a-80f2f0ce9235" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2025.png"><img style="width:674px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2025.png"/></a></figure><p id="8ef3d22c-7b23-4140-b892-3e0033611b09" class="">innerHTML will not execute the script tag</p><p id="a21a0780-eabb-4f47-abfc-9f5d8735ebae" class="">but it will allow img tag , if src address is wrong then it will trigger the trigger the onerror.</p><p id="8ce5deff-3ea4-448a-a68c-f99e3ee57009" class="">&lt;img src = 1 onerror=alert(”1”)&gt;</p><figure id="32eef72b-e16c-4dc7-89f1-74a70c424709" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2026.png"><img style="width:528px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2026.png"/></a></figure><p id="b1de7c1b-dec6-4650-bab0-2e5c5b4f37aa" class="">
+</p><ol type="1" id="958efc3f-d6ff-4226-8db0-7cb77c59a757" class="numbered-list" start="5"><li><strong><a href="https://portswigger.net/web-security/cross-site-scripting/dom-based">DOM XSS</a></strong><strong> in jQuery anchor </strong><code><strong>href</strong></code><strong> attribute sink using </strong><code><strong>location.search</strong></code><strong> source</strong></li></ol><figure id="cca9b57a-39ef-420f-b0d0-dbaa95ad8520" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2027.png"><img style="width:528px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2027.png"/></a></figure><p id="4ff8f79c-b7b8-4224-b87a-82e951655f52" class="">
+</p><h2 id="e11d5c77-f6a2-4ebb-9eed-5fb9a51d6f84" class="">CSRF :</h2><p id="5f71dc8e-9d6f-4e2d-9fb7-e352f88643d4" class="">GET based CSRF:</p><p id="ab4f10b0-5d70-4d29-af20-507880d70e5b" class="">
+</p><p id="76787166-f60c-4c38-b28a-aa3b99b08832" class="">If any critical actions are being taken on the website using GET and without any user interaction.</p><p id="15bb629a-2c4c-4a6f-b0df-b0e19f0f132d" class="">Here attacker have to make victim click on his code while he is loggin in.</p><p id="d0b6e529-6a60-4ba3-aff4-265ead9078f5" class="">Cross Side Request Forgery</p><p id="a774a89c-1c63-42a9-b41c-b0ca06679013" class="">Ways to avoid CSRF :</p><ol type="1" id="7c3ee7db-05f0-408d-aaee-9943879414d1" class="numbered-list" start="1"><li>check the source of the transaction request.</li></ol><ol type="1" id="5dad286a-1427-468a-abd6-58d7fb7bc1ba" class="numbered-list" start="2"><li>Take some extra keys or tokens from the user before processing an important request.</li></ol><ol type="1" id="2a974474-b1f7-4be6-8f84-f1786a6a8f3f" class="numbered-list" start="3"><li>use 2 factor confirmation like OTP etc for critical requests.</li></ol><p id="a277d908-9867-4403-8582-2a54716fbed4" class="">Post based CSRF:</p><p id="43cac861-da4f-4800-a537-de78b1761ca2" class="">Here attacker can change the refer header but if it checked then other types of attacks are possible .</p><p id="17478d47-3877-4da9-8c8d-e4864a9a874d" class="">The <code><strong>Referer</strong></code> HTTP request header contains the absolute or partial address from which a resource has been requested.<br/><br/>Then it is vulnerable to open redirection.<br/></p><p id="2a1402f7-65a6-47f9-9b9d-48364050e12a" class="">Brute force dictionary attack using intruder</p><h3 id="8bdd6d94-1d2d-47f2-8cb1-6efedbf96d6d" class="">Sniper</h3><ul id="c0663924-274b-41c3-9ac1-cbd2448d8ad5" class="bulleted-list"><li style="list-style-type:disc"><strong>Method</strong>: Each payload is placed into each payload position one by one.</li></ul><ul id="c43e040f-a190-4136-a126-f59960639030" class="bulleted-list"><li style="list-style-type:disc"><strong>Payload Sets</strong>: Uses a single payload set.</li></ul><ul id="ae991207-9ad0-4fdc-994d-127d533cf9f4" class="bulleted-list"><li style="list-style-type:disc"><strong>Total Requests</strong>: Product of the number of positions and the number of payloads.</li></ul><ul id="789b7345-ff31-4803-98b9-67ea8d52689d" class="bulleted-list"><li style="list-style-type:disc"><strong>Use Case</strong>: Fuzzing request parameters individually for common vulnerabilities.</li></ul><h3 id="83ce3096-288c-42b0-8ec3-ac30aaa2a45f" class="">Battering Ram</h3><ul id="636270ef-f3a8-4601-984f-3caa0d6c0bda" class="bulleted-list"><li style="list-style-type:disc"><strong>Method</strong>: The same payload is placed into all defined positions simultaneously.</li></ul><ul id="998260df-155b-4ec1-abe6-13fdf1b90b4f" class="bulleted-list"><li style="list-style-type:disc"><strong>Payload Sets</strong>: Uses a single payload set.</li></ul><ul id="a89a3d16-fc76-4b7c-b4a8-1f03a35ae658" class="bulleted-list"><li style="list-style-type:disc"><strong>Total Requests</strong>: Equal to the number of payloads.</li></ul><ul id="223c891e-cdea-438e-9055-f0cb6e4bfa09" class="bulleted-list"><li style="list-style-type:disc"><strong>Use Case</strong>: When the same input needs to be inserted in multiple places (e.g., username in both a cookie and a body parameter).</li></ul><h3 id="956e7efa-8ecd-4041-9fd2-51d055105586" class="">Pitchfork</h3><ul id="271032bf-6811-4bfc-b34c-39b3e67bae2f" class="bulleted-list"><li style="list-style-type:disc"><strong>Method</strong>: Iterates through different payload sets for each defined position simultaneously.</li></ul><ul id="755242ea-1711-40a7-965d-c67b5a5262ea" class="bulleted-list"><li style="list-style-type:disc"><strong>Payload Sets</strong>: Uses multiple payload sets, one for each position.</li></ul><ul id="a0a72c69-0136-4259-ad61-f9efbf42ef61" class="bulleted-list"><li style="list-style-type:disc"><strong>Total Requests</strong>: Equal to the number of payloads in the smallest payload set.</li></ul><ul id="a67d5973-7c0e-4c6e-b739-f7046fcec023" class="bulleted-list"><li style="list-style-type:disc"><strong>Use Case</strong>: When different but related inputs are needed in multiple places (e.g., username and corresponding ID number).</li></ul><h3 id="0c71df62-7e2d-4c7c-b588-e4ab74060ad2" class="">Cluster Bomb</h3><ul id="636a4e91-5cc9-45f9-8fa3-a10144848eee" class="bulleted-list"><li style="list-style-type:disc"><strong>Method</strong>: Iterates through different payload sets for each defined position, testing all combinations.</li></ul><ul id="dfdd3c93-f9c4-4697-a5e0-ea38681a2a8f" class="bulleted-list"><li style="list-style-type:disc"><strong>Payload Sets</strong>: Uses multiple payload sets.</li></ul><ul id="1508fe88-2a2d-4f7d-bc04-cf8b581b2472" class="bulleted-list"><li style="list-style-type:disc"><strong>Total Requests</strong>: Product of the number of payloads in all sets (can be very large).</li></ul><ul id="66fc8d3d-6058-453e-b2c3-f22e09b70b24" class="bulleted-list"><li style="list-style-type:disc"><strong>Use Case</strong>: When unrelated or unknown inputs are needed in multiple places (e.g., guessing both a username and a password).</li></ul><p id="24211c78-a9f3-467d-8192-6cffa5fe291a" class="">
+</p><h2 id="04de0365-ff2e-473f-abbc-49b6dd5c56a1" class="">Vulnerabilities due to improper server security</h2><figure id="a272863b-a607-45c5-b05b-d82b3616b19f" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2028.png"><img style="width:530.2000122070312px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2028.png"/></a></figure><p id="d56d9556-a0a8-4a61-bf0a-e7dd9243e761" class="">Using third party tools is also a problem</p><figure id="d6be9495-8748-42d8-b4d3-3374b5499a36" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2029.png"><img style="width:480px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2029.png"/></a></figure><p id="3a3480ba-bfc6-413d-abc5-a245df80405e" class="">Fingerprinting tools like : Nikto , Builtwith,Nmap</p><p id="86541cbe-65bf-4bff-a0e0-68255a7c129c" class="">
+</p><p id="6ae1af45-34ea-4adc-8cfd-2ea996fda3d8" class="">the  attacker can find public known vulnerabilities in these software.</p><p id="1a590ea5-7eb9-4083-816c-776a417a5e48" class="">Three most common portals to find known vulnerabilities in components:</p><figure id="e866e916-dcf3-4068-9864-7e4c160174cd" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2030.png"><img style="width:432px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2030.png"/></a></figure><p id="d43cf752-5997-4904-9aab-b4576655e219" class=""><a href="https://www.exploit-db.com/">https://www.exploit-db.com/</a></p><hr id="abca3470-0efd-4743-9666-15b858b18268"/><p id="b722b069-6083-44cf-819d-5993d577d2a6" class="">
+</p><p id="ff228a7c-9f76-405c-b1dd-32dd4c9c0371" class="">CMS: Content manangement system</p><p id="631f2a95-c7a1-462d-ae54-10843ba969e0" class="">helps to make and manage websites without the need of indepth knowledge of programming language.</p><p id="00c73e98-7ec7-4cef-91af-960f2daee737" class="">Ex. wordpress, Drupal and Joomla</p><p id="6bb68dc5-decc-4364-8187-ae99ff452410" class="">WPScan - to scan website using wordpress (or WPSeku)</p><p id="cad423cb-80f6-422e-bfee-e85ef5eb4a40" class="">Python3 <a href="http://spseku.py">spseku.py</a> -u “ “</p><p id="dfac5e02-4ed5-495e-9ba2-44c60c175c3f" class="">Droopescan - to scan website using Drupal</p><hr id="793f3db3-5b5e-4a5e-9a5c-7dbea5e79375"/><p id="ed8a4c50-4152-4547-8603-87ffbaf25bdc" class="">
+</p><p id="7a957737-06f5-47a1-ac7d-88483e302793" class="">Types of Vulnerability in CMS :</p><ol type="1" id="3f8848ec-bef6-48c6-8ad0-c4531ee7bbbd" class="numbered-list" start="1"><li>Vulnerability in the installed CMS version.</li></ol><ol type="1" id="977b5e50-2e05-4997-b631-3109646e0dde" class="numbered-list" start="2"><li>Vulnerability in the installed theme/addon/plugin</li></ol><hr id="132edb9f-fc3a-46b4-a2ec-85381be502a6"/><p id="594ffd44-1b90-4acb-8bd0-1a21e146586d" class="">
+</p><p id="710288bd-4c85-4d43-bad2-ca9141667c76" class="">To check whether website is using wordpress or not :</p><p id="eb5401db-13c3-4fbf-88c3-2c170aedb832" class="">check /wp-admin or /wp-login , readme.html</p><hr id="af96af9f-8f31-4918-abc9-83871de504f6"/><p id="60ee1b5b-5d2d-44eb-b5fb-776b4e1d8add" class=""><a href="http://wpvulndb.com">wpvulndb.com</a> - to ckeck vulnerability</p><hr id="93543dea-b213-4570-8447-9bfcae6861f4"/><p id="11a45522-5cbe-458b-87dd-ddf6a3f4c89f" class="">
+</p><p id="e6a36e33-d87e-4cbd-9c89-39abe8aa2299" class=""><a href="http://crunchbase.com">crunchbase.com</a> - gives number of aquisition and ivestors and many more information</p><p id="0df53638-5b3d-4e30-b5d3-86680f2b23e1" class="">This is the crunchbase search for OpenAI</p><p id="f73108da-4b9f-48c3-a239-5b5c8e2e9b38" class="">
+</p><figure id="f48095f9-15fe-4b4e-85e0-b2d6b23ce47f" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2031.png"><img style="width:768px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2031.png"/></a></figure><p id="8dd93453-2834-440c-8898-7a291b15df90" class="">Reverse whols lookup :</p><figure id="55ca3407-296d-412d-85c0-89720383811a" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2032.png"><img style="width:748px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2032.png"/></a></figure><p id="d6a93db7-16a0-4f6f-a4f7-4579fb0ce2ac" class=""><a href="https://viewdns.info/reversewhois/">https://viewdns.info/reversewhois/</a></p><figure id="8451915e-d956-45ae-ab42-b46e9b9ca8c2" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2033.png"><img style="width:530.2000122070312px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2033.png"/></a></figure><p id="31a8fb8f-a2e3-498f-8333-933fb4c10ff8" class="">Finding subdomains related to given domain:</p><p id="63b98989-d18c-450f-b8ec-0786476d6ade" class="">site: <a href="http://internshala.com">internshala.com</a> - www</p><p id="f9838d72-fa4c-4a66-a1bb-8c05d4228aec" class="">-www will remove www from search </p><p id="9f60722d-eaf0-4b05-b0eb-29b6303d4446" class="">But using this targeted dorks we may lose out some subdomains by doing negative search and it is also time taking.</p><h3 id="3e60d74e-279e-44af-8b5c-306d0ce316d7" class="">Other advance tools for information gathering :</h3><p id="213032f9-3196-41d9-b53d-e50541ecb6cf" class="">1.Fierce - <a href="https://github.com/mschwager/fierce">https://github.com/mschwager/fierce</a></p><p id="cb7b06fd-7362-47f8-bf41-977511ad8b86" class="">open in terminal  - python3 -m pip install -r ./requirements.txt</p><p id="2fe011b3-5523-4b81-8300-e46a2eabd97c" class="">Now - python3 ./setup.py install</p><p id="9729fcbb-98c9-47d6-ba81-0ef09bb8e3db" class="">
+</p><p id="573a4701-07fb-481a-ac35-101e546fcf9b" class="">python3 ./fierce/fierce.py  - - domain google.com</p><p id="6b60899d-f09a-4f34-ae76-e365011a8a66" class="">Go to robot.txt in these subdomains , if it is not opening directly </p><p id="f7f33bd7-0d89-45b1-b9a7-c9feca3f246b" class="">We will get page like this </p><figure id="d93cb22a-1eee-4446-b60c-8c2e09ca86af" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2034.png"><img style="width:513px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2034.png"/></a></figure><p id="1000b418-0998-406e-bf56-fae42e4c3823" class="">
+</p><p id="253bcade-dc77-45c5-b3bc-505f93f96954" class="">DirBuster</p><figure id="170ecbac-659f-40bb-a51c-03a8639caa65" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2035.png"><img style="width:530.2000122070312px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2035.png"/></a></figure><p id="f1bccba8-5fe8-441f-9140-ddd2b1fa4519" class="">Nmap :</p><p id="a3826e0b-2316-45b1-aa96-7656b3e24c22" class="">Ntwork mapper is a cmd line tool used in linux devices that tells us about all the devices connected to a network. It gives detailed list of all the IP addresses connected to the network and services running on them.</p><p id="91d143e7-3e3f-4136-a3d7-c7dde8cd2a1a" class="">Zenmap is gui version of nmap</p><p id="c3085f39-736e-4ab1-a871-1071b56a1ae6" class="">nmap -TA -A -v -Pn IP addr</p><p id="67206b49-0c91-415d-be9f-d4c8a3b4983a" class="">
+</p><p id="ebbaf266-055b-4601-b4f2-01d78013dfea" class="">Nikto - automating VAPT (free)</p><ol type="1" id="746ebb98-5c8a-4201-809b-9ed655f1d435" class="numbered-list" start="1"><li>old s/w vulnerability</li></ol><ol type="1" id="baac5b21-8e5f-4046-9a16-afc9fe7c886b" class="numbered-list" start="2"><li>sensitive files</li></ol><ol type="1" id="e09907c3-a2a1-4f93-920b-301328f290cb" class="numbered-list" start="3"><li>HTTPs flaws</li></ol><ol type="1" id="2ca6c5b3-68ea-429f-a1ad-f2aa7c874934" class="numbered-list" start="4"><li>Cookie flaws</li></ol><p id="80a8ad22-2af8-4bf0-afa9-d62828b6f8e9" class="">it uses perl lang</p><p id="248e5ca9-83e1-4fa8-9b25-a874f159d550" class="">nikto’s help option :-  perl ./program/nikto.pl</p><figure id="129352f3-7100-46eb-b82f-0409ef6c0233" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2036.png"><img style="width:480px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2036.png"/></a></figure><hr id="030baa0c-e95e-4305-8891-8323002dec1d"/><p id="6850fb60-afcd-4252-99cd-dc16c1e04ba9" class="">
+</p><p id="b9cafc8b-1942-4029-91dc-736d9cafb4f3" class=""><span style="border-bottom:0.05em solid">Burpsuit Pro</span></p><p id="bd8843d2-618b-476a-a007-0c1adca668a8" class="">It has automated scanner .</p><p id="f240093b-d2ca-444f-bb53-3585f433e1c4" class="">
+</p><p id="c8406a4b-60cb-4ff9-bea6-a911a587e4ef" class="">Doumentation:</p><figure id="3d19aae4-150d-45a4-986b-37753efeed14" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2037.png"><img style="width:576px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2037.png"/></a></figure><p id="641418aa-67eb-40ff-b9e4-068fdea86727" class="">Tools used for preparing POC</p><ol type="1" id="fc2eb23c-1d58-4d4c-9cd9-519582574192" class="numbered-list" start="1"><li>snipping tool</li></ol><p id="a6b00674-082c-498c-bc6f-6ea8748aef78" class="">Detailed developer report - to who patches, it will be entirely technical</p><p id="e19a7abd-30ef-4770-96ab-e763cd4c8f61" class="">High level management summary</p><p id="ef817478-c0bb-42e0-8904-eabb5e21c7ba" class="">Patching :</p><p id="239d0062-dc0c-4fd5-95bc-01249ed21bd5" class="">
+</p><figure id="e11d4433-14ba-4f9a-8a6f-29f733057f05" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2038.png"><img style="width:432px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2038.png"/></a></figure><hr id="57cbfb43-0f9f-4ee0-9a68-f3cbc76876ac"/><p id="6ea82204-3ded-426d-a89b-78c776dd5e64" class="">
+</p><p id="72e8a384-fb11-4d3a-8360-454098b95f09" class="">
+</p><p id="c466362f-aab8-4b1b-8aa9-80d16be40989" class=""><strong>Task 1 . </strong></p><ol type="1" id="0bb5b0f4-2a61-4c66-9152-a690d46a3ba4" class="numbered-list" start="1"><li><strong>Set up an Android machine in the Genymotion emulator. And Configure your Android machine to capture http/https traffic in burpsuite.</strong></li></ol><h1 id="4ad18a71-45e3-4839-aeb5-bb89aef53fa3" class=""><strong>Solution :</strong></h1><p id="d5ac448b-f679-4603-8e51-446a775e2d51" class="">
+</p><ol type="1" id="f222f502-87b3-4ad9-a3b7-4d6e41761c6e" class="numbered-list" start="1"><li><strong>Start the Genymotion Emulator:</strong><ul id="9a3e103b-1259-4d0c-becf-4538cf147a8d" class="bulleted-list"><li style="list-style-type:disc">Select the virtual device you created and click &quot;Start&quot;.<figure id="c0cb9165-201e-41b4-91fd-aeb122f4c2c9" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/32cdddc8-4874-4016-9359-c87673af1bc0.png"><img style="width:624px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/32cdddc8-4874-4016-9359-c87673af1bc0.png"/></a></figure></li></ul><figure id="02894164-51d3-4096-aee5-f1f6e8a45f5a" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2039.png"><img style="width:192px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2039.png"/></a></figure><p id="5cf22e32-c009-4b83-bd4b-3a4ed0741c54" class="">
+</p></li></ol><ol type="1" id="a033f05d-c42a-48f4-95d4-59083441e8d9" class="numbered-list" start="2"><li><strong>Configure Proxy Settings in Android:</strong><ul id="1c885cce-bdbb-4381-96d8-b3f30524a1ca" class="bulleted-list"><li style="list-style-type:disc">Open the emulator and go to <strong>Settings</strong>.</li></ul><ul id="f087bb39-2374-425b-b5fc-a1aa69ba4b74" class="bulleted-list"><li style="list-style-type:disc">Navigate to <strong>Wi-Fi</strong> and long press on the connected network.</li></ul><ul id="fda2f9b1-6b04-46bb-bb36-0f6a77c00283" class="bulleted-list"><li style="list-style-type:disc">Select <strong>Modify network</strong>.</li></ul><ul id="7bbf1c23-84cc-457a-963b-cdfca471572c" class="bulleted-list"><li style="list-style-type:disc">Check the <strong>Advanced options</strong> box.</li></ul><ul id="c76c4f5e-3385-4ca9-afbd-b9a68feda775" class="bulleted-list"><li style="list-style-type:disc">Set <strong>Proxy</strong> to <strong>Manual</strong>.</li></ul><ul id="874527d7-8d30-4f31-a601-1e551b608e18" class="bulleted-list"><li style="list-style-type:disc">Enter the IP address of your computer running Burp Suite (usually <code>192.168.x.x</code> or <code>10.0.x.x</code>) in the <strong>Proxy hostname</strong> field.</li></ul><ul id="a8a89fe4-4181-4e88-8f2b-ed7d830f1fa6" class="bulleted-list"><li style="list-style-type:disc">Enter <code>8080</code> (default port for Burp Suite) in the <strong>Proxy port</strong> field.</li></ul><ul id="a621f01f-61f0-434d-8ea3-4208aed23117" class="bulleted-list"><li style="list-style-type:disc">Save the settings.</li></ul></li></ol><h3 id="9209fc34-8341-4ec9-b430-4c2fc2fb678e" class="">Step 3: Install Burp Suite CA Certificate on the Emulator</h3><ol type="1" id="2cb3ee23-a44a-4a67-9d33-3542dffbcdc6" class="numbered-list" start="1"><li><strong>Export Burp Suite CA Certificate:</strong><ul id="79b7aeab-2cdc-4e4b-9a4d-dee050bed398" class="bulleted-list"><li style="list-style-type:disc">Open Burp Suite.</li></ul><ul id="9ebd90dc-8b0f-4f90-a0e5-3e658dbc94e1" class="bulleted-list"><li style="list-style-type:disc">Go to <strong>Proxy</strong> &gt; <strong>Options</strong>.</li></ul><ul id="463aa77c-634f-404b-a75f-07902799cc3f" class="bulleted-list"><li style="list-style-type:disc">In the <strong>Proxy Listeners</strong> section, ensure there&#x27;s a listener on port <code>8080</code>.</li></ul><ul id="9f3f037a-db4e-43f0-a733-34db4fbc676f" class="bulleted-list"><li style="list-style-type:disc">Click on <strong>Import / export CA certificate</strong> &gt; <strong>Certificate in DER format</strong>.</li></ul><ul id="0bdcdced-aa93-4de0-835b-21af714fba46" class="bulleted-list"><li style="list-style-type:disc">Save the certificate file (e.g., <code>cacert.der</code>).</li></ul></li></ol><ol type="1" id="9fbb6ace-7e83-49d8-93f3-dda72d6a79de" class="numbered-list" start="2"><li><strong>Convert and Install the Certificate:</strong><ul id="07c996d6-f7da-47c0-a0ee-43e77fef50ed" class="bulleted-list"><li style="list-style-type:disc">Rename <code>cacert.der</code> to <code>cacert.cer</code>.</li></ul><ul id="9f83d520-58c6-4845-9b3a-95d274602b6d" class="bulleted-list"><li style="list-style-type:disc">Drag and drop <code>cacert.cer</code> onto the Genymotion emulator window to transfer it.</li></ul><ul id="e93e2806-a6fd-4b42-9e71-08708a506d60" class="bulleted-list"><li style="list-style-type:disc">On the emulator, go to <strong>Settings</strong> &gt; <strong>Security</strong> &gt; <strong>Install from SD card</strong>.</li></ul><ul id="bdb8344e-83be-4725-9edf-7957b87252eb" class="bulleted-list"><li style="list-style-type:disc">Find and install <code>cacert.cer</code>.</li></ul></li></ol><h3 id="59bce37d-b0ad-4c76-a10f-a7d3d286c5d2" class="">Step 4: Configure Burp Suite to Intercept Traffic</h3><ol type="1" id="34a42d9e-af2e-444a-b090-82cfcf380b3e" class="numbered-list" start="1"><li><strong>Start Burp Suite:</strong><ul id="50c505f1-390f-45c6-b06e-acceb8565cca" class="bulleted-list"><li style="list-style-type:disc">Open Burp Suite.</li></ul><ul id="ee972465-471d-45ef-bd41-58010dfa7150" class="bulleted-list"><li style="list-style-type:disc">Go to <strong>Proxy</strong> &gt; <strong>Intercept</strong> and ensure intercept is <strong>off</strong> (we will enable it later).</li></ul><ul id="388c905b-3166-4d70-aaa5-7b13cefb5543" class="bulleted-list"><li style="list-style-type:disc">Go to <strong>Options</strong> and ensure the listener is on port <code>8080</code>.</li></ul></li></ol><ol type="1" id="cf8aaf21-3671-4bae-b3c3-e408f28b4bef" class="numbered-list" start="2"><li><strong>Set Up SSL Pass-Through (Optional but Recommended):</strong><ul id="f1c7d6e1-cc3e-4d65-a41e-dd81b8c2cb29" class="bulleted-list"><li style="list-style-type:disc">In Burp Suite, go to <strong>Proxy</strong> &gt; <strong>Options</strong>.</li></ul><ul id="2abacc41-1903-4eb7-8ab1-6a4d5bd88788" class="bulleted-list"><li style="list-style-type:disc">In the <strong>SSL Pass Through</strong> section, add common hostnames (e.g., <code>google.com</code>, <code>facebook.com</code>) to avoid issues with SSL pinning.</li></ul></li></ol><h3 id="4705f677-194d-4a8b-bb8b-e889be2b67c6" class="">Step 5: Capture Traffic</h3><ol type="1" id="553f3ca3-1e0d-47d3-a960-e1102325c1e7" class="numbered-list" start="1"><li><strong>Enable Intercept:</strong><ul id="cb4ab148-2841-4db5-83fb-0e7a76571470" class="bulleted-list"><li style="list-style-type:disc">In Burp Suite, go to <strong>Proxy</strong> &gt; <strong>Intercept</strong> and turn intercept <strong>on</strong>.</li></ul></li></ol><ol type="1" id="b936fe33-9432-444d-b154-1ea22b1cec28" class="numbered-list" start="2"><li><strong>Use the Emulator:</strong><ul id="b4175644-02f3-43a6-8da2-c0e8601b5408" class="bulleted-list"><li style="list-style-type:disc">Perform any network activity on the Genymotion emulator (e.g., open a browser and visit a website).</li></ul></li></ol><ol type="1" id="84743900-bc96-4b79-9061-8aac893ae47c" class="numbered-list" start="3"><li><strong>Monitor Traffic in Burp Suite:</strong><ul id="d42b86f4-a688-4af7-bda2-8a3a18f5d56b" class="bulleted-list"><li style="list-style-type:disc">You should see HTTP/HTTPS traffic being intercepted by Burp Suite.</li></ul></li></ol><h3 id="66a05807-9f78-4a7e-9432-2130a0518b48" class=""></h3><figure id="9703c9d7-df86-4857-985d-716bb8c05a55"><div class="source"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Screencast_from_2024-07-08_00-26-17.mp4">https://prod-files-secure.s3.us-west-2.amazonaws.com/98da32b2-6ac9-4f5b-ab0d-8170ae14f987/89b39bae-59b4-472e-80ff-c394333dbe3a/Screencast_from_2024-07-08_00-26-17.mp4</a></div></figure><ol type="1" id="e3e69653-ff76-44af-bc24-7b6e0f092796" class="numbered-list" start="2"><li>Scan Bobble app using mobSF</li></ol><p id="ebac1a64-e315-48ac-b21c-dde8d10ae2d3" class=""><a href="https://medium.com/@sherlock297/complete-guide-installing-mobsf-for-mobile-app-security-testing-8ffb70649e4">https://medium.com/@sherlock297/complete-guide-installing-mobsf-for-mobile-app-security-testing-8ffb70649e4</a></p><p id="34e3bb66-fa34-4984-bc63-00cb0a255072" class="">here i downloded apk file from third part website - apkpure.com</p><figure id="300797a3-73b7-48e1-8bb1-9c2b4fc12b4f" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2040.png"><img style="width:624px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2040.png"/></a></figure><figure id="d2a500e4-dd69-4a3c-9815-2e44c4bf744f"><div class="source"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Screencast_from_2024-07-08_13-46-55_(1).mp4">https://prod-files-secure.s3.us-west-2.amazonaws.com/98da32b2-6ac9-4f5b-ab0d-8170ae14f987/429ada92-d434-408f-a546-35eca1be75b9/Screencast_from_2024-07-08_13-46-55_(1).mp4</a></div></figure><hr id="8e7b3545-2ad0-4970-97b1-3b63356bb925"/><p id="ca08e705-efce-44ba-82bd-1475ee59755d" class="">
+</p><h3 id="5c7578c4-41dc-48b5-859f-3dc0a55d47fd" class="">Set up frida</h3><p id="a711321a-b97a-419f-a2d2-a995db5a77db" class=""><a href="https://medium.com/@sarang6489/root-detection-bypass-with-frida-4a78ad075d09">https://medium.com/@sarang6489/root-detection-bypass-with-frida-4a78ad075d09</a></p><p id="d1194c0f-bd0a-4aae-977b-ea1726c2d895" class="">To know the architecture of emulator use adb  </p><p id="23a3de9c-653b-476b-a394-3f4cafd873f2" class="">adb shell</p><h3 id="195a3789-2724-4a0a-bd24-9783f92b1e29" class="">Step 1: Install Frida on Your Computer</h3><ol type="1" id="00a3cb99-6cb4-4e25-a073-df45a2c4831d" class="numbered-list" start="1"><li><strong>Install Frida: </strong>pip install frida-tools</li></ol><ol type="1" id="62104959-d027-478c-80fe-7780fe57440c" class="numbered-list" start="2"><li><strong>Verify Installation:</strong>frida --version</li></ol><h3 id="a7e58699-8ef1-4d83-9147-8393d82fa91f" class="">Step 2: Download and Set Up Frida Server on Your Android Device</h3><ol type="1" id="aee31866-bd24-4d6a-815a-8fa5737ff835" class="numbered-list" start="1"><li><strong>Download Frida Server:</strong></li></ol><p id="26f04dea-c812-43eb-83c5-3eccd8d20dac" class=""><div class="indented"><ul id="6520374e-bb6f-4c70-a255-807dbb848db0" class="bulleted-list"><li style="list-style-type:disc">Download the appropriate Frida server for your device architecture from <a href="https://github.com/frida/frida/releases">Frida&#x27;s GitHub releases</a>.<figure id="262f7dcf-5f8d-4ff9-81cc-8eb0e8240524" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2041.png"><img style="width:513px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2041.png"/></a></figure></li></ul></div></p><ol type="1" id="c1342aef-a7b5-448b-9184-e4043188a226" class="numbered-list" start="1"><li><strong>Transfer Frida Server to Your Device:</strong>adb push frida-server /data/local/tmp/</li></ol><ol type="1" id="a2fca85a-8b05-4bf8-a8ef-7a9a404370d1" class="numbered-list" start="2"><li><strong>Set Permissions:</strong>adb shell &quot;chmod 755 /data/local/tmp/frida-server&quot;</li></ol><ol type="1" id="a899c4f7-9632-41d8-b9e0-f25e1602bc54" class="numbered-list" start="3"><li><strong>Run Frida Server:</strong>adb shell &quot;/data/local/tmp/frida-server &amp;&quot;</li></ol><h3 id="44894dec-3696-4b0c-a3ad-f71ad92a80bc" class="">Step 3: Verify Frida Setup</h3><ol type="1" id="7626ec6f-1a59-4642-95de-094b85072b46" class="numbered-list" start="1"><li><strong>Check Frida Devices:</strong>frida-ps -U<ul id="2b4dcbd2-b72f-46b1-9159-fbc5cbb61008" class="bulleted-list"><li style="list-style-type:disc">This should list the processes running on your Android device.</li></ul></li></ol><h3 id="f4181e36-210f-417b-ae65-e4e0659b85d1" class="">Step 4: Bypass Root Detection in Bobble AI App</h3><ol type="1" id="bbe0d551-d403-4f26-b397-3bcccd3bb644" class="numbered-list" start="1"><li><strong>Identify Root Detection Methods:</strong><ul id="7e0d0136-4e67-4592-9195-cd922a50ccd0" class="bulleted-list"><li style="list-style-type:disc">Common methods include checking for <code>su</code> binary, checking build tags, checking for root management apps, etc.</li></ul></li></ol><ol type="1" id="7735b046-ac6c-495e-8661-381adfd83241" class="numbered-list" start="2"><li><strong>Write a Frida Script to Bypass Root Detection:</strong><ul id="eadd395f-8eb2-4469-9a9c-31300dcda9f7" class="bulleted-list"><li style="list-style-type:disc">Create a JavaScript file (e.g., <code>bypass_root.js</code>) with the following content:</li></ul><pre id="76a91582-0f0e-4d68-b616-1fb1e4fc0440" class="code code-wrap"><span><code>javascriptCopy code
+Java.perform(function () {
+    // Bypass common root detection checks
+
+    // Example: Bypass checking for &#x27;su&#x27; binary
+    var Runtime = Java.use(&#x27;java.lang.Runtime&#x27;);
+    Runtime.exec.overload(&#x27;java.lang.String&#x27;).implementation = function (cmd) {
+        if (cmd.includes(&quot;su&quot;)) {
+            console.log(&quot;Bypassing root check for command: &quot; + cmd);
+            return this.exec(&quot;echo &#x27;Not Found&#x27;&quot;);
+        }
+        return this.exec(cmd);
+    };
+
+    // Example: Bypass checking for root management apps
+    var Context = Java.use(&#x27;android.content.Context&#x27;);
+    var PackageManager = Java.use(&#x27;android.content.pm.PackageManager&#x27;);
+    Context.getPackageManager.implementation = function () {
+        var pm = this.getPackageManager();
+        pm.getPackageInfo.overload(&#x27;java.lang.String&#x27;, &#x27;int&#x27;).implementation = function (pkg, flags) {
+            if (pkg.includes(&quot;com.noshufou.android.su&quot;) || pkg.includes(&quot;eu.chainfire.supersu&quot;)) {
+                console.log(&quot;Bypassing root management app check for package: &quot; + pkg);
+                throw new PackageManager.NameNotFoundException();
+            }
+            return this.getPackageInfo(pkg, flags);
+        };
+        return pm;
+    };
+
+    // Add more checks as needed
+});
+
+</code></span></pre></li></ol><ol type="1" id="4b4c072d-c0cc-4815-84b2-42c8d314f959" class="numbered-list" start="3"><li><strong>Run the Frida Script:</strong>frida -U -f com.bobbleapp -l bypass_root.js --no-pause<br/><br/><ul id="07e69a50-8207-4c1e-83b0-24071af69366" class="bulleted-list"><li style="list-style-type:disc"><code>com.bobbleapp</code> is the package name of the Bobble AI App. Adjust if different.</li></ul></li></ol><figure id="9d18127f-fb4a-4318-a66a-c3e885ab8b3a" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2042.png"><img style="width:805px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2042.png"/></a></figure><figure id="dfe61e7b-90e9-4469-b12c-fc32f49977d4" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2043.png"><img style="width:485px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2043.png"/></a></figure><p id="0023b5a1-83a0-4441-93bc-c4f1cc18c803" class="">
+</p><figure id="2c7cac94-1546-41b5-b57b-8ad30edc96a3"><div class="source"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Screencast_from_2024-07-08_16-14-57.mp4">https://prod-files-secure.s3.us-west-2.amazonaws.com/98da32b2-6ac9-4f5b-ab0d-8170ae14f987/d58115ac-3ea5-4169-9dec-53bb3b643638/Screencast_from_2024-07-08_16-14-57.mp4</a></div></figure><p id="4a39558c-6094-4360-ab33-13ed5066e8f6" class="">
+</p></li></ol><p id="f2b5e504-d3fd-4933-aa47-44e8afdf63e4" class="">
+</p><figure id="2e993e5d-8191-4ba0-89ed-c01036a08722" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2044.png"><img style="width:545px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2044.png"/></a></figure><figure id="51565e89-cc02-4fb6-87a3-f5c74d3242a4" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2045.png"><img style="width:545px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2045.png"/></a></figure><figure id="ca98e3f1-9c9c-4a6b-ba24-b16b24bb3266" class="image"><a href="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2046.png"><img style="width:961px" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Untitled%2046.png"/></a></figure><hr id="2f3a5ded-4d30-45cd-bbef-969a5ba34148"/><h2 id="950835eb-53ea-4211-85a9-6d616c9e58b9" class=""><span style="border-bottom:0.05em solid">Checklist in Pen-testing</span></h2><p id="43eeff01-729d-4967-b22a-e2d4b7feee70" class=""><a href="https://www.notion.so/WEB-APPLICATION-PENTESTING-CHECKLIST-0f02d8074b9d4af7b12b8da2d46ac998?pvs=21"><img class="icon" src="Ethical%20Hacking%20Notes%2023011780e51045339457bc19954b7072/Original_Png-min.png"/>WEB APPLICATION PENTESTING CHECKLIST</a> </p><h3 id="a40c0456-c9ca-43d6-9c18-911dcd3a98b2" class="">1. <strong>Pre-Engagement</strong></h3><ul id="91855cfe-29d3-4d29-865e-a9fada55d4be" class="bulleted-list"><li style="list-style-type:disc">Define scope and objectives<ul id="4c17ced2-9d54-416d-be31-c9d770905e30" class="bulleted-list"><li style="list-style-type:circle">Identify target systems, networks, and applications</li></ul><ul id="cdaaf05b-fcdb-44d6-9193-5c77374132b1" class="bulleted-list"><li style="list-style-type:circle">Determine testing boundaries and exclusions</li></ul></li></ul><ul id="ff760fe4-5688-4169-88ed-d1e5f98d6f6a" class="bulleted-list"><li style="list-style-type:disc">Obtain necessary permissions<ul id="a2ba7d9b-0ec6-4827-89e5-742b249b998f" class="bulleted-list"><li style="list-style-type:circle">Get written consent from the organization</li></ul><ul id="3cd43b34-3038-4738-bf4f-a186c1c63278" class="bulleted-list"><li style="list-style-type:circle">Ensure legal considerations are addressed</li></ul></li></ul><ul id="d4124fb1-ef23-4e65-a244-3516a8e522ba" class="bulleted-list"><li style="list-style-type:disc">Set up communication channels<ul id="633d9a64-5a8d-4c88-87f5-c8d649dbf9a1" class="bulleted-list"><li style="list-style-type:circle">Establish points of contact</li></ul><ul id="a0af0c9a-39fc-44fd-b1a2-1c85ab0a25f9" class="bulleted-list"><li style="list-style-type:circle">Define communication protocols for incident reporting</li></ul></li></ul><h3 id="7cfb526d-0746-4a73-a2ae-7ee48b1a86bb" class="">2. <strong>Information Gathering (Reconnaissance)</strong></h3><ul id="539c4c3c-38ab-473c-9338-33215660bcb5" class="bulleted-list"><li style="list-style-type:disc">Passive Reconnaissance<ul id="0183ce63-5407-48b1-acf5-b67edbbea930" class="bulleted-list"><li style="list-style-type:circle">Perform WHOIS lookups</li></ul><ul id="12a52561-5b4d-4ff2-813a-990a7014af1e" class="bulleted-list"><li style="list-style-type:circle">Gather domain information</li></ul><ul id="8e813b74-174e-4afa-b396-0cf95de64d24" class="bulleted-list"><li style="list-style-type:circle">Use OSINT tools (e.g., Shodan, Censys)</li></ul><ul id="10ec88f0-9796-445b-81b7-9b484b9c182c" class="bulleted-list"><li style="list-style-type:circle">Analyze social media and public records</li></ul></li></ul><ul id="a8a694ec-fabf-487b-ba77-131ee39a6d66" class="bulleted-list"><li style="list-style-type:disc">Active Reconnaissance<ul id="12ac6ee4-38c6-4bd2-ab5b-28ad08373b4a" class="bulleted-list"><li style="list-style-type:circle">Conduct network scanning (Nmap, Netcat)</li></ul><ul id="4f78a1b2-952b-4ce0-8d11-3d80b2902bb8" class="bulleted-list"><li style="list-style-type:circle">Perform DNS enumeration</li></ul><ul id="273c795e-8d13-43ba-9fb3-72c42bd15550" class="bulleted-list"><li style="list-style-type:circle">Identify open ports and services</li></ul></li></ul><h3 id="3097a21d-65b2-4a63-b55f-36234488897a" class="">3. <strong>Vulnerability Assessment</strong></h3><ul id="b13a3333-90a0-4004-995e-a8de0f09d7ec" class="bulleted-list"><li style="list-style-type:disc">Network Vulnerability Scanning<ul id="3dce0091-2de8-4751-a4ae-f4f738ada254" class="bulleted-list"><li style="list-style-type:circle">Use automated tools (Nessus, OpenVAS)</li></ul><ul id="87701e9c-f5ef-4fc9-83fe-1c681496c8f7" class="bulleted-list"><li style="list-style-type:circle">Identify outdated software and unpatched systems</li></ul></li></ul><ul id="0f719f9b-c9dc-4b35-890d-2f8798aac355" class="bulleted-list"><li style="list-style-type:disc">Web Application Vulnerability Scanning<ul id="77fb14aa-96e2-4b1b-94c2-e98e067ed18e" class="bulleted-list"><li style="list-style-type:circle">Use automated tools (Burp Suite, OWASP ZAP)</li></ul><ul id="cde67883-ed5d-4d86-9324-0a36f34fd3bc" class="bulleted-list"><li style="list-style-type:circle">Check for common vulnerabilities (SQL injection, XSS)</li></ul></li></ul><ul id="e2f52546-2d10-4f42-a51f-bc6cf3d20fe3" class="bulleted-list"><li style="list-style-type:disc">Manual Verification<ul id="5d0f791d-5d77-41dc-811b-fb6ca2b0d918" class="bulleted-list"><li style="list-style-type:circle">Validate automated scan results</li></ul><ul id="73e49f25-3dc9-4b0b-9c26-f40bec45333e" class="bulleted-list"><li style="list-style-type:circle">Perform manual testing for complex vulnerabilities</li></ul></li></ul><h3 id="e763727e-a643-431a-95a0-1b34663c95d8" class="">4. <strong>Exploitation</strong></h3><ul id="0c4ecdd2-2396-4747-b2a1-041d2ca3d00e" class="bulleted-list"><li style="list-style-type:disc">Network Exploitation<ul id="3e496504-9e33-4e48-882e-1334e07127d0" class="bulleted-list"><li style="list-style-type:circle">Exploit known vulnerabilities</li></ul><ul id="3cf3b9ce-a71f-4d29-98f9-ec431623eaef" class="bulleted-list"><li style="list-style-type:circle">Gain unauthorized access to systems and data</li></ul></li></ul><ul id="f95cab2e-48b5-4d8d-b9aa-779dafe5f914" class="bulleted-list"><li style="list-style-type:disc">Web Application Exploitation<ul id="195bf1d3-bfec-4ba8-af26-3befea846261" class="bulleted-list"><li style="list-style-type:circle">Exploit web application vulnerabilities</li></ul><ul id="a6ddd073-3081-4220-9fa4-bc64ae1cf29e" class="bulleted-list"><li style="list-style-type:circle">Test for session management flaws and insecure direct object references</li></ul></li></ul><ul id="0188690e-a1a7-4eaf-b152-a07d68784779" class="bulleted-list"><li style="list-style-type:disc">Privilege Escalation<ul id="0df9b10d-71df-4b87-8250-c0d8e8cbb4ab" class="bulleted-list"><li style="list-style-type:circle">Attempt to gain higher privileges on compromised systems</li></ul><ul id="7d06f5e7-40bc-4ca2-8699-40c0334bed80" class="bulleted-list"><li style="list-style-type:circle">Use local exploits to escalate access</li></ul></li></ul><h3 id="23bdee0f-77b3-403e-af91-bec3f9cc69c6" class="">5. <strong>Post-Exploitation</strong></h3><ul id="63c4a077-10db-456c-af81-1e1d200b0ac5" class="bulleted-list"><li style="list-style-type:disc">Data Exfiltration<ul id="a75f4741-3cd7-4569-8625-e934214a3c77" class="bulleted-list"><li style="list-style-type:circle">Demonstrate potential data breaches</li></ul><ul id="72faad61-f929-4fb5-815d-8c6b2ee5d5b0" class="bulleted-list"><li style="list-style-type:circle">Simulate data extraction methods</li></ul></li></ul><ul id="12075ff7-a0ff-431c-9bb5-b6a5aea7eeb6" class="bulleted-list"><li style="list-style-type:disc">Persistence<ul id="87dac4fb-e676-4d90-ac6b-a802dabc5ba5" class="bulleted-list"><li style="list-style-type:circle">Install backdoors or create user accounts for sustained access</li></ul><ul id="78222b06-fc05-4a95-b58e-d228345eec0c" class="bulleted-list"><li style="list-style-type:circle">Test for persistence mechanisms</li></ul></li></ul><h3 id="47ede67d-7f7f-40d5-bf33-315ac01a6505" class="">6. <strong>Reporting</strong></h3><ul id="849f3fc9-9afc-4704-b14a-fe5beac496f5" class="bulleted-list"><li style="list-style-type:disc">Document Findings<ul id="289d4e05-f4d6-4723-94cb-3a2f5230eb4f" class="bulleted-list"><li style="list-style-type:circle">Record all identified vulnerabilities</li></ul><ul id="a69d9180-dec4-42c0-a652-b0cf2ee438cb" class="bulleted-list"><li style="list-style-type:circle">Include evidence of exploitation and impact analysis</li></ul></li></ul><ul id="61b88d5e-c2a3-49ef-a53b-97c48ebccdf9" class="bulleted-list"><li style="list-style-type:disc">Provide Recommendations<ul id="9c206196-9620-440c-be50-b496b25f87d0" class="bulleted-list"><li style="list-style-type:circle">Suggest remediation steps for each vulnerability</li></ul><ul id="f40d723e-5dfe-4770-be67-0002eba24a70" class="bulleted-list"><li style="list-style-type:circle">Offer guidance on improving security posture</li></ul></li></ul><ul id="f1be12b5-b105-4e34-b0a5-5daf55635a14" class="bulleted-list"><li style="list-style-type:disc">Executive Summary<ul id="0c90b4be-1f07-4e1d-a974-1da26a4495e9" class="bulleted-list"><li style="list-style-type:circle">Summarize key findings and recommendations for management</li></ul><ul id="593905fe-e3e3-4e9e-92a3-f388a4893b0c" class="bulleted-list"><li style="list-style-type:circle">Highlight critical issues and business impacts</li></ul></li></ul><h3 id="7d068dea-a103-45af-aa1d-2ecc6c1ce5e1" class="">7. <strong>Remediation and Re-Testing</strong></h3><ul id="056a88f0-38b3-4042-9321-83dd22f01eab" class="bulleted-list"><li style="list-style-type:disc">Collaborate with the client to remediate vulnerabilities</li></ul><ul id="b8b228af-2da1-4341-a0ad-9b6330441164" class="bulleted-list"><li style="list-style-type:disc">Perform re-testing to verify that vulnerabilities have been fixed</li></ul><ul id="93f88894-7111-48a8-acd6-715de7ccf9d1" class="bulleted-list"><li style="list-style-type:disc">Update the report with the re-testing results</li></ul><h3 id="60fa41eb-dc90-4146-895e-5c190cc25d5b" class="">8. <strong>Post-Engagement</strong></h3><ul id="5d13d391-185f-46c7-8e0d-9d7031eda5b7" class="bulleted-list"><li style="list-style-type:disc">Deliver Final Report<ul id="eec9191b-2193-4922-a1cc-22bc615646ff" class="bulleted-list"><li style="list-style-type:circle">Provide a detailed report to the client</li></ul><ul id="8cd9b334-5890-4883-ab92-fd45fe00d731" class="bulleted-list"><li style="list-style-type:circle">Conduct a debriefing session to discuss findings and recommendations</li></ul></li></ul><ul id="29a861b2-9d70-46d7-a90d-5949d980ee91" class="bulleted-list"><li style="list-style-type:disc">Clean Up<ul id="fc17de11-adfb-4b59-ba52-266bf6192d4f" class="bulleted-list"><li style="list-style-type:circle">Remove any tools or backdoors used during testing</li></ul><ul id="2b98e705-5298-4232-b866-7db4296dcf46" class="bulleted-list"><li style="list-style-type:circle">Ensure no residual impact on the client’s environment</li></ul></li></ul><h3 id="78dfaf80-a151-46c0-83fa-53e08538fe0d" class="">9. <strong>Continuous Improvement</strong></h3><ul id="fb01ef6c-8a94-4cd2-9ebe-0f9068c6d4bd" class="bulleted-list"><li style="list-style-type:disc">Review the engagement for lessons learned</li></ul><ul id="8418306b-e46c-4e11-9211-eebc23ec6085" class="bulleted-list"><li style="list-style-type:disc">Update methodologies and checklists based on new findings and techniques</li></ul><ul id="07b3e71b-b77a-4388-966f-9aaa77814336" class="bulleted-list"><li style="list-style-type:disc">Stay updated with the latest vulnerabilities and attack vectors</li></ul></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
